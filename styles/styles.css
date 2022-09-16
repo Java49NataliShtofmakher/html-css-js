@@ -1,0 +1,40 @@
+.logo {
+    font-size: 2em;
+}
+
+.main-class {
+    
+}
+
+.details-container {
+
+}
+
+.details-image {
+ width: 1000px;
+}
+
+.details-title {
+    display: block;
+}
+
+.thumbnails-list {
+    list-style: none;
+}
+
+.thumbnails-item {
+
+}
+
+.thumbnails-anchor {
+
+}
+
+.thumbnails-image {
+    width: 400px;
+  
+}
+
+.thumbnails-title {
+    display: block;
+}
