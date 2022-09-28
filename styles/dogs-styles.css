@@ -2,7 +2,12 @@
     font-family: lakeshore;
     src: url("fonts/LAKESHOR-webfont.woff");
 }
-:root{
+@font-face {
+    font-family: airstream;
+    src: url("fonts/Airstream-webfont.woff");
+}
+
+:root {
     --thumbnails-img-width: 20vw;
     --thumbnails-img-height: 15vw;
     --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
@@ -41,6 +46,10 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 10vh;
+   
+}
+.details-frame{
+    position: relative;
 }
 
 .details-image {
@@ -52,6 +61,13 @@ body {
 
 .details-title {
     display: block;
+    font-family: airstream;
+    font-style: italic;
+    background-color: rgb(180, 252, 252);
+    position: absolute;
+    left: 3vw;
+    bottom: 2vw;
+    
 }
 
 .thumbnails-list {
@@ -92,24 +108,69 @@ body {
     height: var(--thumbnails-title-height);
     background-color: antiquewhite;
 }
+.thumbnails-item:hover{
+    transform: scale(1.1);
+}
+
 @media (min-width: 560px) {
-    .thumbnails-list{
+    :root {
+        --thumbnails-img-width: 12vw;
+        --thumbnails-img-height: 8vw;
+        --thumbnails-title-height: calc(var(--thumbnails-img-height)* 0.25)
+    }
+
+    .logo {
+        font-size: 1.8em;
+    }
+
+    .thumbnails-list {
         flex-direction: column;
         flex-wrap: nowrap;
-        max-height: 70vh;
+        max-height: 75vh;
         order: -1;
         justify-content: flex-start;
-       
     }
-    .main-class{
+
+    .main-class {
         flex-direction: row;
         justify-content: space-around;
-        
+
     }
+
     .details-image {
-        margin-top: 5vw;
-        width: 50vw;
-        height: 30vw;
+        margin-top: 3vw;
+        width: 45vw;
+        height: 38vw;
     }
-   
+
+    .details-container {
+        justify-content: center;
+        align-items: center;
+      
+    }
+    .details-title{
+        left: 0;
+        bottom: 4vw;
+    }
+}
+
+@media (min-width: 900px) {
+    .thumbnails-list {
+        padding-right: 2vw;
+        margin-top: 2.5vh;
+        max-height: 86vh;
+    }
+
+    .thumbnails-title {
+        font-size: 1.5em;
+    }
+
+    .details-title {
+        font-size: 1.5em;
+    }
+
+    .details-image {
+        width: 45vw;
+        height: 35vw;
+    }
 }
