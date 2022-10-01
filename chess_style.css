@@ -1,0 +1,49 @@
+body,html{
+    height: 100%;
+    margin: 0;
+   
+}
+:root{
+    --cell-width: 6vw;
+    --cell-height: 6vw;
+}
+.board{
+    display: inline-block;
+    border: solid 2px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) 
+}
+.board-row{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.cell-black{
+    height: var(--cell-height);
+    width: var(--cell-width);
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+}
+.cell-white{
+    height: var(--cell-height);
+    width: var(--cell-width);
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+@media(min-width: 560px){
+    :root{
+        --cell-width: 3vw;
+        --cell-height: 3vw;
+    }
+}
+@media (min-width: 900px) {
+    :root{
+        --cell-width: 4vw;
+        --cell-height: 4vw;
+    }
+}
