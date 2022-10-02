@@ -80,6 +80,7 @@ body {
     justify-content: space-around;
     gap: 10px;
     padding-left: 0;
+    padding: 1em;
 }
 
 .thumbnails-item {
@@ -89,7 +90,8 @@ body {
     border-color: rgb(120, 97, 66);
     border-radius: 12px;
     overflow: hidden;
-    margin: 1em;
+   
+   
 }
 
 .thumbnails-anchor {
@@ -108,10 +110,10 @@ body {
     text-align: center;
     height: var(--thumbnails-title-height);
     background-color: antiquewhite;
+
 }
 .thumbnails-item:hover{
     transform: scale(1.1);
-    margin: 1em;
 }
 
 @media (min-width: 560px) {
@@ -131,7 +133,7 @@ body {
         max-height: 75vh;
         order: -1;
         justify-content: flex-start;
-    }
+        }
 
     .main-class {
         flex-direction: row;
@@ -153,12 +155,12 @@ body {
     .details-title{
         left: 0;
         bottom: 4vw;
+        font-size: 1.5em;
     }
 }
 
 @media (min-width: 900px) {
     .thumbnails-list {
-        padding-right: 2vw;
         margin-top: 2.5vh;
         max-height: 86vh;
     }
