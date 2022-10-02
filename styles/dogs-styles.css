@@ -89,6 +89,7 @@ body {
     border-color: rgb(120, 97, 66);
     border-radius: 12px;
     overflow: hidden;
+    margin: 1em;
 }
 
 .thumbnails-anchor {
@@ -110,6 +111,7 @@ body {
 }
 .thumbnails-item:hover{
     transform: scale(1.1);
+    margin: 1em;
 }
 
 @media (min-width: 560px) {
