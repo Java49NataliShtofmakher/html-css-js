@@ -1,6 +1,12 @@
 @font-face {
     font-family: lakeshore;
-    src: url("fonts/LAKESHOR-webfont.woff");
+    src: url("fonts/LAKESHOR-webfont.svg");
+    src: url("fonts/LAKESHOR-webfont.woff")
+}
+@font-face {
+    font-family: airstream;
+    src: url("fonts/Airstream-webfont.svg");
+    src: url("fonts/Airstream-webfont.woff")
 }
 
 :root {
@@ -58,12 +64,13 @@ body {
 
 .details-title {
     display: block;
-    font-size: 1.2em;
+    font-family: airstream;
+    font-size: 1.7em;
     color: rgb(29, 77, 116);
     background-color: azure;
     position: absolute;
-    left: 3vw;
-    bottom: 7vw;
+    left: 0;
+    bottom: 8vw;
 }
 
 .thumbnails-list {
