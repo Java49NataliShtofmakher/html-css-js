@@ -2,6 +2,7 @@
     font-family: lakeshore;
     src: url("fonts/LAKESHOR-webfont.woff");
 }
+
 @font-face {
     font-family: airstream;
     src: url("fonts/Airstream-webfont.woff");
@@ -40,12 +41,14 @@ body {
     justify-content: center;
     flex-grow: 1;
 }
-.hidden.main-class{
+
+.hidden.main-class {
     --thumbnails-img-width: 35vw;
     --thumbnails-img-height: 25vw;
     --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
 }
-.hidden .thumbnails-list{
+
+.hidden .thumbnails-list {
     max-height: 75vh;
     margin-bottom: 10vh;
 }
@@ -55,15 +58,19 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 10vh;
-   
+    transition: 5s ease-in;
+  
 }
-.hidden .details-container{
+
+.hidden .details-container {
     display: none;
 }
-.details-frame{
+
+.details-frame {
     position: relative;
 }
-.hide-button{
+
+.hide-button {
     position: absolute;
     top: 2vh;
     right: 3vw;
@@ -86,7 +93,7 @@ body {
     position: absolute;
     left: 3vw;
     bottom: 2vw;
-    
+
 }
 
 .thumbnails-list {
@@ -109,8 +116,8 @@ body {
     border-color: rgb(120, 97, 66);
     border-radius: 12px;
     overflow: hidden;
-   
-   
+
+
 }
 
 .thumbnails-anchor {
@@ -131,11 +138,18 @@ body {
     background-color: antiquewhite;
 
 }
-.hidden .thumbnails-title{
+
+.hidden .thumbnails-title {
     font-size: 1.2em;
 }
-.thumbnails-item:hover{
+
+.thumbnails-item:hover {
     transform: scale(1.1);
+}
+
+.is-point {
+    transform: scale(0.001);
+    transition: 0s;
 }
 
 @media (min-width: 560px) {
@@ -155,7 +169,7 @@ body {
         max-height: 75vh;
         order: -1;
         justify-content: flex-start;
-        }
+    }
 
     .main-class {
         flex-direction: row;
@@ -172,14 +186,16 @@ body {
     .details-container {
         justify-content: center;
         align-items: center;
-      
+
     }
-    .details-title{
+
+    .details-title {
         left: 0;
         bottom: 4vw;
         font-size: 1.5em;
     }
 }
+
 
 @media (min-width: 900px) {
     .thumbnails-list {
