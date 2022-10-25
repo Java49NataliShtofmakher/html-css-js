@@ -22,7 +22,8 @@ function showDetails(){
     detailsContainer.classList.add(IS_POINT);
     setTimeout(function(){
         detailsContainer.classList.remove(IS_POINT);
-    },1)
+    },1
+)
 
 }
 function hideDetails(){
