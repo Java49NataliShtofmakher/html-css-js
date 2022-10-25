@@ -58,15 +58,17 @@ body {
     align-items: center;
     margin-bottom: 10vh;
     position: relative;
+    transition: 5s ease-in;
+}
+
+.hidden .details-container {
+    display: none;
 }
 
 .details-frame {
     position: relative;
 }
 
-.hidden .details-container {
-    display: none;
-}
 
 .hide-button {
     position: absolute;
@@ -143,6 +145,11 @@ body {
 
 .thumbnails-anchor {
     text-decoration: none;
+}
+
+.is-point {
+    transform: scale(0.001);  
+    transition: 0s; 
 }
 
 @media (min-width: 560px) {
