@@ -5,10 +5,18 @@ const mainClass = document.querySelector(".main-class");
 const HIDDEN = "hidden"
 const detailsContainer = document.querySelector(".details-container");
 const IS_POINT = "is-point";
+const audio = document.getElementById("audio")
 
 function setDetails (anchor) {
     detailsImage.setAttribute("src", anchor.getAttribute("data-details-image"));
     detailsTitle.innerHTML = anchor.getAttribute("data-details-title");
+
+    audio.setAttribute("src", anchor.getAttribute('data-sound'))
+    audio.play();
+    setTimeout(function () {
+        audio.pause();
+        audio.currentTime = 0;
+    }, 5000)
 }
 
 for (let i = 0; i < anchors.length; i++){
@@ -22,9 +30,7 @@ function showDetails(){
     detailsContainer.classList.add(IS_POINT);
     setTimeout(function(){
         detailsContainer.classList.remove(IS_POINT);
-    },1
-)
-
+    },1)
 }
 function hideDetails(){
     mainClass.classList.add(HIDDEN)
