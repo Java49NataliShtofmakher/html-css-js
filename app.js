@@ -1,5 +1,8 @@
 
 function sumDigits(number) {
+    if (number < 0){
+        number  = number * -1
+    }
     let res = 0; 
     let digit;
     do{
@@ -16,4 +19,4 @@ function sumDigits(number) {
 
      return res;
 }
-console.log(sumDigits(1234));
+console.log(sumDigits(-1234));
