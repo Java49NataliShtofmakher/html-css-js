@@ -1,73 +1,40 @@
-// console.log("Hello world");
-// for (var i = 0; i < 3; i++) {
-//     setTimeout(function () {
-//         console.log(i)
-//     });
+let ar = [];
+ar[10000] = 100;
+ar[1] = [1, 2, 3];
+console.log("length of array", ar.length);
+ar[0] = "hello";
+console.log("10000-th element = ", ar[10000]);
+console.log("0-th element  = ", ar[0]);
+console.log("1-th element  = ", ar[1]);
+
+let str = "hello";
+let arStr = Array.from(str); // getting array of the string's symbols
+console.log("String 'hello' -> arraay is ", arStr);
+
+// for (let i = 0; i < arStr.length; i++){
+//     console.log(arStr[i]);
 // }
-// function sum(op1, op2){
-//     let res = op1 + op2;
-//     return res;
-// }
-// function sumDigits(number) 
-// func should return sum of a given num digit
-// ex. consl.log ( sumDigits(123));
-// = 6
 
-// *************************** CW12
-
-// let strNum1 = "123";
-// let strNum2 = "9";
-// console.log(strNum1 + strNum2); // 1239
-// console.log(strNum1 - strNum2); // 114
-// console.log(strNum1 > strNum2); // false
-
-// let num1 = +strNum1;
-// let num2 = +strNum2;
-// console.log(num1 + num2); // 132
-// console.log(num1 - num2); // 114
-// console.log(num1 > num2); // true
-
-// let strNumStr = "123ab";
-// let numStr = +strNumStr;
-// console.log(numStr);
-// let num = parseInt(strNumStr);
-
-// let num10 = 123;
-// let strNum10 = "" + num10;
-// let strNum16 = num10.toString(16);
-// console.log(strNum16);
-
-// conversion from Morse code to number
-// " . " => 0   "-" => 1
-function fromMorseToNumber(morseCode) {
-    let res = 0;
-    for (let i = 0; i < morseCode.length; i++) {
-        let code = morseCode[i] == '.' ? 0 : 1;
-        res = res * 2 + code;
-    }
-    return res;
+function println(element , index, array){
+    console.log("element at index ",index, element);
 }
-// console.log(fromMorseToNumber('-.-.-..-'));
+arStr.forEach(println);
 
-function fromNumberToMorse(number) {
-    number = Math.abs(number);
-    let res = "";
-    do {
-        let digit = number % 2;
-        let sym = digit == 0 ? "." : "-";
-        res = sym + res;
-        number = Math.trunc(number / 2);
+let arCodeAscii = arStr.map(function(symbol, index){
+    return symbol.charCodeAt();
+    // return index % 2 == 0 ? symbol.charCodeAt() : symbol;
+})
+console.log(arStr, arCodeAscii);
 
-    } while (number != 0)
-    return res;
-}
-// console.log(fromNumberToMorse(169));
-//HW
-// 10; 16; base
-// function fromNumberToString(number, base){}
-//getting code from symbol "0" 
-console.log('abcz'.charCodeAt(3))
+let sumAscii = arStr.reduce(function(res, cur){
+    return res + cur.charCodeAt();
+},0)  // res = 0 iznachalnoe znachenie res
+console.log(sumAscii);
+console.log(arStr.reduce(function(res,cur){
+    return res + cur // res = ""
+}, ""));
 
-// function fromStringToNumber(string, base){}
-//getting symbol from code
-// console.log(String.fromCharCode(99))
+//hw
+// function checkTZ(teudatNumber(string))
+// control sum for even index gidit value 
+// return true false
