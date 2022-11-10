@@ -1,99 +1,43 @@
-// *********CHECK ID NUMBER *******************************************************************
-function checkNum(array) {               // check all elements of array that are numbers 
-    // function checkNum(element, index, array) {
-    // if (typeof +element !== 'number') {
-    //     console.log("Wrong ID number");
-    //     return;
-    // }
+const numbers = [115, 2, 3, 6, -9, 1];
+function minMax(numbers) {
+    // const max = numbers.reduce((max, num) => (max > num ? max : num));
+    // const min = numbers.reduce((min, num) => (min < num ? min : num));
+    // return [min, max];
 
-    let isError = false;
-    for (let i = 0; i < array.length; i++) {
-        if (typeof +array[i] !== 'number') {
-            isError = true;
-            break;
+    const getMinMax = (arr, current) => {
+        const min = arr[0];
+        const max = arr[1];
+        if (current > min) {
+            arr[1] = current > max ? current : max;
+        } else {
+            arr[0] = current;
         }
+        return arr;
     }
-    return isError;
+    let minMaxNumbers = numbers.reduce(getMinMax, [numbers[0], numbers[0]]);
+
+    return minMaxNumbers;
 }
+// console.log(minMax(numbers)); 
 
-function checkIdNumber(arID) {      // make operations with digits according to the algorithm 
-    return arID.map(function (num, index) {
-        if (index % 2 == 0) {
-            return num;
-        }
-        else {
-            num = num * 2;
-            if (num > 9) {
-                let secondDigit = num % 10;
-                let firstDigit = (num - secondDigit) / 10;
-                num = secondDigit + firstDigit;
-            }
-            return num;
-        }
-
-    });
+let strings = ["abc", "old_abc", "lm", "123", "old_lmn"]
+function deleteWithPrefix(strings, prefix) {
+    return strings.filter(str => str.indexOf(prefix) === -1);
 }
+// console.log(deleteWithPrefix(strings, "old"));
 
-function getSum(arr) {      //make sum of digits in array
-    return arr.reduce(function (res, cur) {
-        return res + +cur;
-    }, 0)
-}
-
-function checkTeudatZehut(teudatStrNumber) {
-    let IDstr = teudatStrNumber;
-    let arID = Array.from(IDstr);       // making array from given string
-
-    if (arID.length != 9) {         // checking of correct amount of digits
-        console.log("Wrong ID number length");
-        return;
+let numberAr = [1, 6, 3, 8, 5, 2, 7, 4];
+function getSortedEvenOdd(numbers) {
+    let res = [];
+    let evenArr = [];
+    let oddArr = [];
+    // 1
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i] % 2 == 0 ? evenArr.push(numbers[i]) : oddArr.push(numbers[i]);
     }
-    // arID.forEach(checkNum); // I cant use method forEach() for checking if there are numbers in arrays, in case there is not, I cant break or stop the function. Thats why I did it another way.
+    evenArr.sort((a, b) => a - b);
+    oddArr.sort((a, b) => (a > b ? -1 : 1));
 
-    const isError = checkNum(arID);
-    if (isError) return;
-
-    let arCheckedIDnumber = checkIdNumber(arID)
-
-    let sumIDnum = getSum(arCheckedIDnumber)
-
-    if (sumIDnum % 10 == 0) {       // check correctnes of ID
-        return true;
-    }
-    else {
-        return false;
-    }
-
+    return res = [...evenArr, ...oddArr];
 }
-
-console.log("The correctness of your ID -> ", checkTeudatZehut("342418944"));
-console.log("The correctness of your ID -> ", checkTeudatZehut("342418945"));
-
-// *****************GENERATE ID************************************************
-// second part of homework that Yuri said to do yesterday, but isnt written in dropbox, but i alreadu did it
-
-function createID() {
-    let newID = [];
-    for (let i = 0; i < 8; i++) {
-        newID[i] = Math.round(Math.random() * 9);
-    }
-    return newID;
-}
-
-function generateID() {
-    const ids = createID();
-    const newID = checkIdNumber(ids);
-    const sum = getSum(newID)
-    const x = sum % 10;
-
-    let ninthNumber = 0;
-    if (x !== 0) {
-        ninthNumber = 10 - x
-    }
-
-    ids[8] = ninthNumber
-    return ids.join("")
-}
-
-
-console.log("New generated ID -> ", generateID());
+// console.log(getSortedEvenOdd(numberAr));
