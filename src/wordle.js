@@ -1,66 +1,82 @@
-const words = ["pappy", "beach", "apple", "react", "basis",
-    "anger", "hello", "dress"];
-let word;
-const N_LETTERS = 5;
-const letterElements = document.querySelectorAll(".letter-guess");
-const trialsElement = document.querySelector(".guess-trials");
+const words = ["cat", "strawberry", "watermelon", "sun", "winter"];
+const questions = ["Fluffy pet", "Red berry", "The biggest berry in the world", "The brightest star",
+    "The coldest time of the year"];
+
+let generatedIndex;
+let hiddenWord;
+let flGameOver = false;
+
+const sectionElement = document.querySelector(".word-guess")
+const questionElement = document.querySelector(".question-alert");
 const gameOverElement = document.querySelector(".game-over-message");
 const playAgainElement = document.getElementById("play-again");
-const INITIAL_TRIALS = 6;
-let trials = INITIAL_TRIALS;
 
-function showTrialsMessage(trials) {
-
-    trialsElement.innerHTML = `remained ${trials} guess trials`;
-
+function getGeneratedIndex() {
+    return Math.floor(Math.random() * words.length)
 }
-function startGame() {
-    let index = Math.floor(Math.random() * words.length);
-    word = words[index];
-    trials = INITIAL_TRIALS
-    showTrialsMessage(trials);
-    gameOverElement.innerHTML = '';
-    playAgainElement.style.display = 'none';
-    letterElements.forEach(e => e.innerHTML = '')
+
+function showQuestion(generatedIndex) {
+    let question = questions[generatedIndex];
+    return `Question: ${question}`;
 }
+
+function getDivsElements(generatedIndex) {
+    let wordField = words[generatedIndex];
+    let wordFieldAr = Array.from(wordField);
+    let res = wordFieldAr.map(letter => `<div class="letter-guess">${letter}</div>`);
+    return res.join('');
+}
+
 function onChange(event) {
-    const wordGuess = event.target.value;
-    trials--;
-    showTrialsMessage(trials);
+    const enteredWord = event.target.value;
+    const letterElements = document.querySelectorAll(".letter-guess");
 
-    event.target.value = '';
-    if (wordGuess.length != N_LETTERS) {
-        alert(`A word should contain ${N_LETTERS} letters`)
-    } else {
-        const wordAr = Array.from(wordGuess);
-        wordAr.forEach((l, i) => letterElements[i].innerHTML = l)
-        const colors = wordAr.map((l, i) => {
-            let index = word.indexOf(l);
-            let res = 'red';
-            if (index > -1) {
-                res = l == word[i] ? 'green' : 'yellow'
+    if (flGameOver) {
+        alert("game is over");
+        return;
+    }
+
+    const enteredWordArray = Array.from(enteredWord);
+    const hiddenWordArray = Array.from(hiddenWord);
+    enteredWordArray.forEach((enteredLetter, enteredIndex) => {
+        hiddenWordArray.forEach((hiddenLetter, hiddenIndex) => {
+            if (enteredLetter === hiddenLetter) {
+                letterElements[hiddenIndex].style.background = "white"
             }
-            return res;
         })
-        colors.forEach((c, i) =>
-            letterElements[i].style.color = c)
-    }
-    const res = wordGuess == word;
-    if (trials == 0 || res) {
-        endGame(res);
+    });
+
+    let counter = 0
+    letterElements.forEach(el => {
+        if (el.style.background === 'white') {
+            counter += 1
+        }
+    })
+
+    if (counter === hiddenWordArray.length) {
+        endGame()
     }
 
+    document.querySelector(".input-text").value = '';
 }
-function endGame(isSuccess) {
-    if (isSuccess) {
-        gameOverElement.innerHTML = "Congratulations you are winner";
-        gameOverElement.style.color = "green"
-    } else {
-        gameOverElement.innerHTML = "Sorry you are loser";
-        gameOverElement.style.color = "red"
-    }
+function endGame() {
+    gameOverElement.innerHTML = "Congratulations you are winner!!!";
 
     playAgainElement.style.display = 'block';
-    trialsElement.innerHTML = ''
+    flGameOver = true;
 }
-startGame()
+
+function startGame() {
+    generatedIndex = getGeneratedIndex();
+    hiddenWord = words[generatedIndex];
+    playAgainElement.style.display = 'none';
+
+    document.querySelector(".input-text").value = '';
+    gameOverElement.innerHTML = "";
+    flGameOver = false;
+
+    questionElement.innerHTML = showQuestion(generatedIndex);
+    sectionElement.innerHTML = getDivsElements(generatedIndex);
+}
+
+startGame();

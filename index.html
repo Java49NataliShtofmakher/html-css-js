@@ -10,18 +10,14 @@
 </head>
 
 <body>
-    <input type="text" onchange="onChange(event)">
+    <input type="text" onchange="onChange(event)" class="input-text">
     <section class="word-guess">
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
+
     </section>
-    <p class="guess-trials"></p>
+    <p class="question-alert"></p>
     <p class="game-over-message"></p>
     <button id="play-again" onclick="startGame()">Play Again</button>
-    
+
     <script src="src/wordle.js"></script>
 </body>
 
