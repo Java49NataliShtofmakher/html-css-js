@@ -1,32 +1,39 @@
-// const person = {
-//     id: 123,
-//     name: "Vasya",
-//     last_name: "Ivanov",
-//     year: 2000,
-//     address: {city: "NY", street: "Lords", house_nuber: 8}
-// }
-// const name1 = getAddres();
-// function getAddres(){
-//     return app;
-// }
-// const yearExp = "ye" + "ar";
-// console.log(person.year);
-// console.log(person.address[name1]);
+const str1 = "yellow";
+const str2 = "leloylq";
+function isAnagram(str1, str2) {
+    const strArr1 = Array.from(str1);
+    const strArr2 = Array.from(str2);
+    if (strArr1.length !== strArr2.length) {
+        return "Should be the same length, ERR";
+    }
 
-const strings = ["a","opr","lmn", "abc", "lmn", "lmn", "abc", "a"];
-
-function displayOccurance(strings){
+    let counter = strArr1.length;
     const occurances = {};
-    strings.forEach(element => {
-        if (occurances[element]){
+    strArr1.forEach(element => {
+        if (occurances[element]) {
             occurances[element]++;
-        }else{
+        } else {
             occurances[element] = 1;
         }
     });
-    // console.log(Object.entries(occurances)); 
+
     const occurancesArr = Object.entries(occurances);
-    occurancesArr.sort((e1,e2) => e2[1] - e1[1])
-    console.log(occurancesArr);
+
+    strArr2.forEach((letter, i) => {
+        occurancesArr.forEach((occurance, index) => {
+            let [occLetter, occAmount] = occurance;
+            if (occLetter === letter) {
+                occAmount = occAmount - 1
+                occurancesArr[index] = [occLetter, occAmount];
+
+                if (occAmount >= 0) {
+                    counter = counter - 1;
+                }
+            }
+        })
+    })
+
+    return counter === 0;
 }
-displayOccurance(strings);
+
+console.log(isAnagram(str1, str2))
