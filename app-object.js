@@ -1,17 +1,64 @@
-function createEmployee(id, name, birthYear, salary) {
-    return { id, name, birthYear, salary};
+function generateBirthYear() {
+    const max = 65;
+    const min = 18;
+    return Math.floor(Math.random() * (max - min) + min);
 }
-const empl1 = createEmployee(123, "Vasya", 2000, 10000);
-const empl2 = createEmployee(123, "Vasya", 2000, 10000);
-console.log(empl1,empl2);
-function updateSalary(empl, newSalary){
-    empl.salary = newSalary;
+function generateId(idDigits) {
+    const pow = 10 ** (idDigits - 1);
+    return Math.floor(Math.random() * 9 * pow + 1 * pow);
 }
-updateSalary(empl1,15000);
-console.log(empl1);
- function updateSalaryPrimitive(salary, newSalary){
-    salary = newSalary;
+function getRandomSalary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
-let salary = 10000;
-updateSalaryPrimitive(salary, 20000);
-console.log(salary);
+//********************** Task 1 **************************************
+function createRandomEmployees(nEmployees, idDigits, minSalary, maxSalary) {
+    let employeesArr = [];
+    for (let i = 0; i < nEmployees; i++) {
+        const id = generateId(idDigits);
+        const name = "name" + id;
+        const salary = getRandomSalary(minSalary, maxSalary);
+        const birthYear = generateBirthYear();
+        employeesArr[i] = createEmployee(id, name, salary, birthYear);
+    }
+    return employeesArr;
+}
+function createEmployee(id, name, salary, birthYear) {
+    return { id, name, salary, birthYear };
+}
+const employees = createRandomEmployees(10, 4, 10000, 20000);
+
+// console.log("Array of employees: ", employees);
+
+//********************** Task 2 **************************************
+
+function getAverageAge(employees) {
+    let sumAge = employees.reduce((acc, employee) => {
+        return acc + employee.birthYear
+    }, 0)
+
+    return Math.floor(sumAge / employees.length);
+}
+// console.log("Average age of the emloyees: ", getAverageAge(employees));
+
+//********************** Task 3 **************************************
+
+function getEmployeesBySalary(employees, salaryFrom, salaryTo) {
+    return employees
+        .filter(employee => employee.salary > salaryFrom && employee.salary < salaryTo)
+        .sort((a, b) => a.salary - b.salary);
+
+}
+// console.log(getEmployeesBySalary(employees, 10000, 15000));
+
+//********************** Task 4 **************************************
+
+function increaseSalary(employees, borderSalary, percent) {
+   return employees.map(employee => {
+        if (employee.salary < borderSalary){
+            let add = employee.salary * percent/100;
+            employee.salary += add; 
+        }
+        return employee;
+    })
+}
+// console.log("Increasing Salary: ",increaseSalary(employees, 15000, 10));
