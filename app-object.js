@@ -1,6 +1,6 @@
 function generateBirthYear() {
-    const max = 65;
-    const min = 18;
+    const max = 2004;
+    const min = 1957;
     return Math.floor(Math.random() * (max - min) + min);
 }
 function generateId(idDigits) {
