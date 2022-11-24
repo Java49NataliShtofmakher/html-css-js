@@ -1,32 +1,17 @@
-// const person = {
-//     id: 123,
-//     name: "Vasya",
-//     last_name: "Ivanov",
-//     year: 2000,
-//     address: {city: "NY", street: "Lords", house_nuber: 8}
-// }
-// const name1 = getAddres();
-// function getAddres(){
-//     return app;
-// }
-// const yearExp = "ye" + "ar";
-// console.log(person.year);
-// console.log(person.address[name1]);
-
-const strings = ["a","opr","lmn", "abc", "lmn", "lmn", "abc", "a"];
-
-function displayOccurance(strings){
-    const occurances = {};
-    strings.forEach(element => {
-        if (occurances[element]){
-            occurances[element]++;
-        }else{
-            occurances[element] = 1;
-        }
-    });
-    // console.log(Object.entries(occurances)); 
-    const occurancesArr = Object.entries(occurances);
-    occurancesArr.sort((e1,e2) => e2[1] - e1[1])
-    console.log(occurancesArr);
+function createEmployee(id, name, birthYear, salary) {
+    return { id, name, birthYear, salary};
 }
-displayOccurance(strings);
+const empl1 = createEmployee(123, "Vasya", 2000, 10000);
+const empl2 = createEmployee(123, "Vasya", 2000, 10000);
+console.log(empl1,empl2);
+function updateSalary(empl, newSalary){
+    empl.salary = newSalary;
+}
+updateSalary(empl1,15000);
+console.log(empl1);
+ function updateSalaryPrimitive(salary, newSalary){
+    salary = newSalary;
+}
+let salary = 10000;
+updateSalaryPrimitive(salary, 20000);
+console.log(salary);
