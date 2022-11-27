@@ -27,7 +27,7 @@ function createEmployee(id, name, salary, birthYear) {
 }
 const employees = createRandomEmployees(10, 4, 10000, 20000);
 
-// console.log("Array of employees: ", employees);
+console.log("Array of employees: ", employees);
 
 //********************** Task 2 **************************************
 
